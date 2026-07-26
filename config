@@ -11,6 +11,13 @@
 # Set Modifier Key (Mod4 = Windows Key)
 set $mod Mod4
 
+# Set minimum geometry bounds for floating windows (width x height)
+floating_minimum_size 300 x 200
+
+# Set maximum geometry bounds for floating windows (width x height)
+# Using -1 x -1 means unconstrained/no maximum limit (or set explicit bounds like 1600 x 900)
+floating_maximum_size 1600 x 900
+
 # Applications & Launchers
 set $terminal   kitty
 set $launcher1  dmenu_run -fn 'Lilex Nerd Font Mono-10' -nb '#282a36' -nf '#f8f8f2' -sb '#bd93f9' -sf '#282a36'
@@ -84,8 +91,8 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # Screen Brightness Controls (Requires brightnessctl or light)
-bindsym XF86MonBrightnessUp exec --no-startup-id "brightnessctl set +5% && dunstify -a 'System' -h string:x-dunst-stack-tag:brightness -h int:value:$(brightnessctl -m | cut -d, -f4 | tr -d '%') '󰖨 Brightness' -i notification-display-brightness"
-bindsym XF86MonBrightnessDown exec --no-startup-id "brightnessctl set 5%- && dunstify -a 'System' -h string:x-dunst-stack-tag:brightness -h int:value:$(brightnessctl -m | cut -d, -f4 | tr -d '%') '󰖨 Brightness' -i notification-display-brightness"
+bindsym XF86MonBrightnessUp exec --no-startup-id "brightnessctl set +10% && dunstify -a 'System' -h string:x-dunst-stack-tag:brightness -h int:value:$(brightnessctl -m | cut -d, -f4 | tr -d '%') '󰖨 Brightness' -i notification-display-brightness"
+bindsym XF86MonBrightnessDown exec --no-startup-id "brightnessctl set 10%- && dunstify -a 'System' -h string:x-dunst-stack-tag:brightness -h int:value:$(brightnessctl -m | cut -d, -f4 | tr -d '%') '󰖨 Brightness' -i notification-display-brightness"
 
 # Audio Volume Controls (Native Pipewire / WirePlumber)
 # Raise volume (capped at 100%)
@@ -228,7 +235,7 @@ bar {
         binding_mode_indicator yes
         
         # 5.9 Font configuration and height/vertical padding adjustments
-        font pango:Lilex Nerd Font 11
+        font pango:Lilex Nerd Font 10
         workspace_min_width 50
         padding 3px 0
         tray_padding 7px
