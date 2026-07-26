@@ -85,6 +85,15 @@ focus_follows_mouse yes
 # - none:   Prevents mouse cursor from ever moving automatically
 mouse_warping output
 
+# ------------------------------------------------------------------------------
+# Popups During Fullscreen Mode
+# Options: smart | ignore | leave_fullscreen
+# ------------------------------------------------------------------------------
+# - smart:            Show popups if they belong to the current fullscreen window (default)
+# - ignore:           Suppress all popups while fullscreen mode is active
+# - leave_fullscreen: Automatically exit fullscreen mode when any popup appears
+popup_during_fullscreen smart
+
 # Applications & Launchers
 set $terminal   kitty
 set $launcher1  dmenu_run -fn 'Lilex Nerd Font Mono-10' -nb '#282a36' -nf '#f8f8f2' -sb '#bd93f9' -sf '#282a36'
