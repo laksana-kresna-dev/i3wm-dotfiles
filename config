@@ -146,6 +146,14 @@ focus_on_window_activation focus
 # - no:  Hide custom mark identifiers from window decorations
 show_marks yes
 
+# ------------------------------------------------------------------------------
+# Tiling Drag Configuration
+# Syntax: tiling_drag off | modifier|titlebar [modifier|titlebar]
+# Syntax: swap_modifier <Modifier>
+# ------------------------------------------------------------------------------
+# Enable drag-and-drop moving for tiled windows via modifier key or titlebar
+tiling_drag modifier titlebar
+
 # Applications & Launchers
 set $terminal   kitty
 set $launcher1  dmenu_run -fn 'Lilex Nerd Font Mono-10' -nb '#282a36' -nf '#f8f8f2' -sb '#bd93f9' -sf '#282a36'
