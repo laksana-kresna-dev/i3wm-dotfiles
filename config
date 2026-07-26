@@ -112,6 +112,14 @@ focus_wrapping yes
 # - true:  Force legacy Xinerama API (use only if RandR fails/causes glitches)
 force_xinerama false
 
+# ------------------------------------------------------------------------------
+# Automatic Back-and-Forth Workspace Switching
+# Options: yes | no
+# ------------------------------------------------------------------------------
+# - yes: Switching to current workspace toggles back to previous workspace
+# - no:  Switching to current workspace does nothing (default)
+workspace_auto_back_and_forth yes
+
 # Applications & Launchers
 set $terminal   kitty
 set $launcher1  dmenu_run -fn 'Lilex Nerd Font Mono-10' -nb '#282a36' -nf '#f8f8f2' -sb '#bd93f9' -sf '#282a36'
