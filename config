@@ -128,6 +128,16 @@ workspace_auto_back_and_forth yes
 # Example: 500ms delay before clearing urgency indicator
 force_display_urgency_hint 500 ms
 
+# ------------------------------------------------------------------------------
+# Window Focus Activation Behavior
+# Options: smart | urgent | focus | none
+# ------------------------------------------------------------------------------
+# - smart:  Grant focus if on active workspace; otherwise set urgency hint (default)
+# - urgent: Always mark requesting window as urgent without changing focus
+# - focus:  Always switch focus (and jump workspace) to the requesting window
+# - none:   Ignore focus activation requests completely
+focus_on_window_activation smart
+
 # Applications & Launchers
 set $terminal   kitty
 set $launcher1  dmenu_run -fn 'Lilex Nerd Font Mono-10' -nb '#282a36' -nf '#f8f8f2' -sb '#bd93f9' -sf '#282a36'
