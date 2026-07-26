@@ -289,23 +289,39 @@ for_window [workspace=$ws1] layout default
 for_window [workspace=$ws2] layout tabbed
 for_window [workspace=$ws3] layout tabbed
 
-# --- 9.2 Global Window Types & Roles ---
-# Global Dialog Enforcer
+# --- 9.2 Comprehensive i3wm window_type Specifications ---
+# Standard applications (Ensure primary windows follow default tiling behavior)
+for_window [window_type="normal"] floating disable
+
+# Interactive dialogs & secondary popups
 for_window [window_type="dialog"] floating enable, resize set 40 ppt 40 ppt, move position center
 
-# Standard Window Roles (Pop-ups, Settings, Utilities & Progress Screens)
+# Tool palettes, utilities, and toolbars
+for_window [window_type="utility"] floating enable, resize set 30 ppt 30 ppt, move position center
+for_window [window_type="toolbar"] floating enable, resize set 30 ppt 20 ppt, move position center
+
+# Application startup splash screens
+for_window [window_type="splash"] floating enable, resize set 30 ppt 30 ppt, move position center
+
+# Menus, Tooltips, and System Notifications (Floating without border clutter)
+for_window [window_type="menu"] floating enable
+for_window [window_type="dropdown_menu"] floating enable
+for_window [window_type="popup_menu"] floating enable
+for_window [window_type="tooltip"] floating enable
+for_window [window_type="notification"] floating enable
+
+# --- 9.3 Standard X11 window_role Specifications ---
 for_window [window_role="pop-up"] floating enable, resize set 40 ppt 40 ppt, move position center
-for_window [window_role="utility"] floating enable, resize set 30 ppt 30 ppt, move position center
 for_window [window_role="Preferences"] floating enable, resize set 40 ppt 40 ppt, move position center
 for_window [window_role="setup"] floating enable, resize set 40 ppt 40 ppt, move position center
 for_window [window_role="task_manager"] floating enable, resize set 40 ppt 50 ppt, move position center
 for_window [window_role="progress_dialog"] floating enable, resize set 30 ppt 15 ppt, move position center
 for_window [window_role="about"] floating enable, resize set 30 ppt 30 ppt, move position center
 
-# --- 9.3 Terminal Rules ---
+# --- 9.4 Terminal Rules ---
 for_window [class="kitty-floating"] floating enable, resize set 50 ppt 50 ppt, move position center
 
-# --- 9.4 Web Browsers Rules (Firefox & Zen) ---
+# --- 9.5 Web Browsers Rules (Firefox & Zen) ---
 # Places Manager (Bookmarks & History)
 for_window [class="(?i)firefox" instance="^Places$"] floating enable, resize set 50 ppt 50 ppt, move position center
 for_window [class="^zen$" instance="^Places$"] floating enable, resize set 50 ppt 50 ppt, move position center
@@ -323,12 +339,12 @@ no_focus [class="^zen$" title="^Picture-in-Picture$"]
 
 for_window [window_role="PictureInPicture"] floating enable, resize set 25 ppt 25 ppt, move window to position 1420 px 790 px, sticky enable
 
-# --- 9.5 Media Players (MPV) ---
+# --- 9.6 Media Players (MPV) ---
 for_window [class="^mpv$" window_role="^mpv$"] floating enable, resize set 25 ppt 25 ppt, move window to position 1420 px 790 px, sticky enable
 no_focus [class="^mpv$" window_role="^mpv$"]
 for_window [class="^mpv$" window_role="^mpv-fullscreen$"] floating disable, focus
 
-# --- 9.6 Download Managers & Clients ---
+# --- 9.7 Download Managers & Clients ---
 # Xtreme Download Manager (XDM)
 for_window [class="^Xdm-app$" title="^Xtreme Download Manager$"] floating enable, resize set 75 ppt 75 ppt, move position center
 for_window [class="^Xdm-app$" title="^New Download$"] floating enable, resize set 30 ppt 15 ppt, move position center
@@ -337,7 +353,7 @@ for_window [class="^Xdm-app$" title="^Settings$"] floating enable, resize set 50
 # Transmission-GTK
 for_window [class="^transmission-gtk$"] floating enable, resize set 30 ppt 60 ppt, move position center
 
-# --- 9.7 Workspace Assignments ---
+# --- 9.8 Workspace Target Assignments ---
 # WS1: Core Terminal
 assign [class="^kitty$"] $ws1
 
