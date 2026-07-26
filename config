@@ -136,7 +136,15 @@ force_display_urgency_hint 500 ms
 # - urgent: Always mark requesting window as urgent without changing focus
 # - focus:  Always switch focus (and jump workspace) to the requesting window
 # - none:   Ignore focus activation requests completely
-focus_on_window_activation smart
+focus_on_window_activation focus
+
+# ------------------------------------------------------------------------------
+# Display Window Marks in Titlebars
+# Options: yes | no
+# ------------------------------------------------------------------------------
+# - yes: Draw custom mark identifiers in window titlebars (default)
+# - no:  Hide custom mark identifiers from window decorations
+show_marks yes
 
 # Applications & Launchers
 set $terminal   kitty
