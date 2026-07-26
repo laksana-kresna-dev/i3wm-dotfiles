@@ -77,6 +77,14 @@ default_floating_border normal 2
 # - always: Focus follows mouse movement even across different workspaces/monitors
 focus_follows_mouse yes
 
+# ------------------------------------------------------------------------------
+# Mouse Cursor Warping Behavior
+# Options: output | none
+# ------------------------------------------------------------------------------
+# - output: Warps mouse cursor to center of newly focused monitor/output (default)
+# - none:   Prevents mouse cursor from ever moving automatically
+mouse_warping output
+
 # Applications & Launchers
 set $terminal   kitty
 set $launcher1  dmenu_run -fn 'Lilex Nerd Font Mono-10' -nb '#282a36' -nf '#f8f8f2' -sb '#bd93f9' -sf '#282a36'
