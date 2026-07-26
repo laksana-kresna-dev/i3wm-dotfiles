@@ -120,6 +120,14 @@ force_xinerama false
 # - no:  Switching to current workspace does nothing (default)
 workspace_auto_back_and_forth yes
 
+# ------------------------------------------------------------------------------
+# Delay Urgency Hint Reset on Workspace Change
+# Syntax: force_display_urgency_hint <ms>
+# ------------------------------------------------------------------------------
+# Set duration in milliseconds to keep the urgency hint visible on workspace switch
+# Example: 500ms delay before clearing urgency indicator
+force_display_urgency_hint 500 ms
+
 # Applications & Launchers
 set $terminal   kitty
 set $launcher1  dmenu_run -fn 'Lilex Nerd Font Mono-10' -nb '#282a36' -nf '#f8f8f2' -sb '#bd93f9' -sf '#282a36'
