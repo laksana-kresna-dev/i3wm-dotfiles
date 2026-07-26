@@ -11,6 +11,17 @@
 # Set Modifier Key (Mod4 = Windows Key)
 set $mod Mod4
 
+# ------------------------------------------------------------------------------
+# Floating Modifier Configuration
+# ------------------------------------------------------------------------------
+# Menggunakan Mod4 (Tombol Windows) + Klik Mouse untuk interaksi jendela floating:
+# - Mod4 + Klik Kiri  (Button1) : Tahan & geser untuk memindahkan jendela (Move)
+# - Mod4 + Klik Kanan (Button3) : Tahan & geser untuk mengubah ukuran jendela (Resize)
+floating_modifier $mod
+
+# ------------------------------------------------------------------------------
+# Floating Window Size Constraints
+# ------------------------------------------------------------------------------
 # Set minimum geometry bounds for floating windows (width x height)
 floating_minimum_size 300 x 200
 
@@ -260,11 +271,6 @@ bindsym $mod+Shift+x exec --no-startup-id betterlockscreen -l dimblur --off 5
 # ------------------------------------------------------------------------------
 # 4. Keybindings: Navigation & Layouts
 # ------------------------------------------------------------------------------
-
-# Mouse Bindings
-# Mod+Left Click: Drag floating windows to move them (Default i3 behavior)
-# Mod+Right Click: Drag to resize windows from any edge (Default i3 behavior)
-floating_modifier $mod
 
 # Mod+Middle Click: Toggle window state between floating and tiling seamlessly
 # bindsym --whole-window $mod+button2 floating toggle
