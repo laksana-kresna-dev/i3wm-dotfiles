@@ -154,6 +154,24 @@ show_marks yes
 # Enable drag-and-drop moving for tiled windows via modifier key or titlebar
 tiling_drag modifier titlebar
 
+# Optional: Set a key to swap windows instead of moving them when dragged
+tiling_drag swap_modifier $mod
+
+# ------------------------------------------------------------------------------
+# Window Gaps Configuration
+# Syntax: gaps inner|outer|horizontal|vertical|top|right|bottom|left <px>
+# ------------------------------------------------------------------------------
+# Define gap size in pixels
+gaps inner 25
+gaps outer -5
+
+# Smart Gaps: Automatically disable gaps if only 1 window is on the workspace
+# Options: off | on | inverse_outer
+smart_gaps off
+
+# Smart Borders: Hide borders if only 1 window is visible and gaps are 0
+smart_borders on
+
 # Applications & Launchers
 set $terminal   kitty
 set $launcher1  dmenu_run -fn 'Lilex Nerd Font Mono-10' -nb '#282a36' -nf '#f8f8f2' -sb '#bd93f9' -sf '#282a36'
@@ -178,15 +196,6 @@ set $dracula-yellow       #f1fa8c
 # Font for window titles and bar
 font pango:Lilex Nerd Font 10
 
-# --- i3-gaps Configuration ---
-# Inner gaps: Space between windows
-gaps inner 25
-
-# Outer gaps: Space between windows and screen edges
-gaps outer -5
-
-# Only show borders if there is more than one window on a workspace
-#smart_borders on
 # ------------------------------
 
 # Window Colors (Dracula Theme Spec)
