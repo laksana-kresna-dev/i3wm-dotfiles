@@ -57,6 +57,17 @@ title_align center
 # - smart_no_gaps:  Hide borders on screen edges if single container AND gaps are 0
 hide_edge_borders smart
 
+# ------------------------------------------------------------------------------
+# Default Window Border Styles
+# Syntax: default_border normal|pixel|none [<width>]
+# Syntax: default_floating_border normal|pixel|none [<width>]
+# ------------------------------------------------------------------------------
+# Default border style for new tiled containers
+default_border pixel 2
+
+# Default border style for new floating windows
+default_floating_border normal 2
+
 # Applications & Launchers
 set $terminal   kitty
 set $launcher1  dmenu_run -fn 'Lilex Nerd Font Mono-10' -nb '#282a36' -nf '#f8f8f2' -sb '#bd93f9' -sf '#282a36'
@@ -80,10 +91,6 @@ set $dracula-yellow       #f1fa8c
 # ------------------------------------------------------------------------------
 # Font for window titles and bar
 font pango:Lilex Nerd Font 10
-
-# Thin borders for a modern look
-default_border pixel 3
-default_floating_border normal 3
 
 # --- i3-gaps Configuration ---
 # Inner gaps: Space between windows
