@@ -94,6 +94,16 @@ mouse_warping output
 # - leave_fullscreen: Automatically exit fullscreen mode when any popup appears
 popup_during_fullscreen smart
 
+# ------------------------------------------------------------------------------
+# Focus Wrapping Behavior
+# Options: yes | no | force | workspace
+# ------------------------------------------------------------------------------
+# - yes:       Wrap focus within current container boundary (default)
+# - no:        Disable focus wrapping entirely (stops at outer edges)
+# - force:     Force focus wrapping across parent container boundaries
+# - workspace: Allow wrapping only across workspace boundaries
+focus_wrapping yes
+
 # Applications & Launchers
 set $terminal   kitty
 set $launcher1  dmenu_run -fn 'Lilex Nerd Font Mono-10' -nb '#282a36' -nf '#f8f8f2' -sb '#bd93f9' -sf '#282a36'
