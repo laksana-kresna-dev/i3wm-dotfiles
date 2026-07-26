@@ -234,7 +234,7 @@ bar {
         tray_padding 7px
 
         # 5.10 Disable clicking on workspace buttons
-        bindsym button1 nop
+        # bindsym button1 nop
         bindsym button2 nop
         bindsym button3 nop
         bindsym button4 nop
@@ -283,62 +283,69 @@ exec_always --no-startup-id xidlehook \
 # ------------------------------------------------------------------------------
 # 9. Window Rules & Custom Target Routings
 # ------------------------------------------------------------------------------
-# Layout Enforcers (Targeting entire workspaces directly using criteria)
+
+# --- 9.1 Workspace Layout Enforcers ---
 for_window [workspace=$ws1] layout default
 for_window [workspace=$ws2] layout tabbed
 for_window [workspace=$ws3] layout tabbed
 
-# Global layout rule: Force all application dialog windows to a consistent geometry & center alignment
+# --- 9.2 Global Window Types & Roles ---
+# Global Dialog Enforcer
 for_window [window_type="dialog"] floating enable, resize set 40 ppt 40 ppt, move position center
 
-# Automatically format the dedicated floating terminal with 50% width and 50% height
+# Standard Window Roles (Pop-ups, Settings, Utilities & Progress Screens)
+for_window [window_role="pop-up"] floating enable, resize set 40 ppt 40 ppt, move position center
+for_window [window_role="utility"] floating enable, resize set 30 ppt 30 ppt, move position center
+for_window [window_role="Preferences"] floating enable, resize set 40 ppt 40 ppt, move position center
+for_window [window_role="setup"] floating enable, resize set 40 ppt 40 ppt, move position center
+for_window [window_role="task_manager"] floating enable, resize set 40 ppt 50 ppt, move position center
+for_window [window_role="progress_dialog"] floating enable, resize set 30 ppt 15 ppt, move position center
+for_window [window_role="about"] floating enable, resize set 30 ppt 30 ppt, move position center
+
+# --- 9.3 Terminal Rules ---
 for_window [class="kitty-floating"] floating enable, resize set 50 ppt 50 ppt, move position center
 
-# Force Places window instances (Bookmarks, History, Library managers) into floating mode
+# --- 9.4 Web Browsers Rules (Firefox & Zen) ---
+# Places Manager (Bookmarks & History)
 for_window [class="(?i)firefox" instance="^Places$"] floating enable, resize set 50 ppt 50 ppt, move position center
 for_window [class="^zen$" instance="^Places$"] floating enable, resize set 50 ppt 50 ppt, move position center
 
-# Force floating for Firefox windows with dynamic titles starting with "Torrents"
+# Dynamic Torrent Popups
 for_window [class="(?i)firefox" instance="^Navigator$" title="^Torrents.*"] floating enable, resize set 33 ppt 50 ppt, move position center
-
-# Force floating for Zen Browser windows with dynamic titles starting with "Torrents"
 for_window [class="^zen$" instance="^Navigator$" title="^Torrents.*"] floating enable, resize set 33 ppt 50 ppt, move position center
 
-# Force Firefox Picture-in-Picture window into floating, precise size, and bottom-right position
+# Picture-in-Picture Overlays
 for_window [class="(?i)firefox" title="^Picture-in-Picture$"] floating enable, resize set 25 ppt 25 ppt, move window to position 1420 px 790 px, sticky enable
 no_focus [class="(?i)firefox" title="^Picture-in-Picture$"]
 
-# Force Zen Browser Picture-in-Picture window into floating, precise size, and bottom-right position
 for_window [class="^zen$" title="^Picture-in-Picture$"] floating enable, resize set 25 ppt 25 ppt, move window to position 1420 px 790 px, sticky enable
 no_focus [class="^zen$" title="^Picture-in-Picture$"]
 
-# MPV Standard Mode: Treat like Picture-in-Picture (Floating, bottom-right, no focus)
+for_window [window_role="PictureInPicture"] floating enable, resize set 25 ppt 25 ppt, move window to position 1420 px 790 px, sticky enable
+
+# --- 9.5 Media Players (MPV) ---
 for_window [class="^mpv$" window_role="^mpv$"] floating enable, resize set 25 ppt 25 ppt, move window to position 1420 px 790 px, sticky enable
 no_focus [class="^mpv$" window_role="^mpv$"]
-
-# MPV Fullscreen Mode: Force full override and automatically grab input focus
 for_window [class="^mpv$" window_role="^mpv-fullscreen$"] floating disable, focus
 
-# XDM Main Dashboard View Layout Constraints
+# --- 9.6 Download Managers & Clients ---
+# Xtreme Download Manager (XDM)
 for_window [class="^Xdm-app$" title="^Xtreme Download Manager$"] floating enable, resize set 75 ppt 75 ppt, move position center
-
-# XDM Intercept Target for New Download Popup Trigger Events
 for_window [class="^Xdm-app$" title="^New Download$"] floating enable, resize set 30 ppt 15 ppt, move position center
-
-# XDM Intercept Target for Settings Window Panel Configuration
 for_window [class="^Xdm-app$" title="^Settings$"] floating enable, resize set 50 ppt 50 ppt, move position center
 
-# Transmission-GTK View Layout Constraints
+# Transmission-GTK
 for_window [class="^transmission-gtk$"] floating enable, resize set 30 ppt 60 ppt, move position center
 
-# WS1: Core Tiling Terminal Routing (Bypasses kitty-floating class)
+# --- 9.7 Workspace Assignments ---
+# WS1: Core Terminal
 assign [class="^kitty$"] $ws1
 
-# WS2: Modern Web Browsers Routing
+# WS2: Web Browsers
 assign [class="^Google-chrome$"] $ws2
 assign [class="^firefox$"] $ws2
 assign [class="^zen$"] $ws2
 
-# WS3: File Managers Routing
+# WS3: File Managers
 assign [class="^Pcmanfm$"] $ws3
 assign [class="^pcmanfm-qt$"] $ws3
