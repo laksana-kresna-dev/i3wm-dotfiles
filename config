@@ -422,6 +422,16 @@ exec --no-startup-id feh --bg-fill ~/.config/i3/wallpapers/linux-arch-dark.jpg
 # Power Management: Monitor battery with upower and alert via notifications
 exec_always --no-startup-id poweralertd
 
+# ------------------------------------------------------------------------------
+# System Preferences (X Server Options)
+# ------------------------------------------------------------------------------
+# b off:            Disable system bell
+# c off:            Disable key click
+# -dpms:            Disable DPMS (Energy Star) features
+# r rate 300 60:    Set key repeat delay (300ms) and rate (60 Hz)
+# s noblank s off:  Disable screen blanking & screen saver
+exec_always --no-startup-id xset b off c off -dpms r rate 300 60 s noblank s off
+
 # Idle Management: xidlehook configuration
 # 300s (5m)  : Screen off
 # 900s (15m) : Lock screen
