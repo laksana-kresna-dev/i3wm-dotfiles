@@ -9,6 +9,7 @@
 # 1. Variables & Modifiers
 # ------------------------------------------------------------------------------
 # Set Modifier Key (Mod4 = Windows Key)
+set $alt Mod1
 set $mod Mod4
 
 # ------------------------------------------------------------------------------
@@ -306,6 +307,15 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # ------------------------------------------------------------------------------
+# Tabbed Layout / Focus Switcher (Looping with next/prev)
+# ------------------------------------------------------------------------------
+# Focus next container/tab (loops around automatically)
+bindsym $alt+Tab focus next
+
+# Focus previous container/tab (loops around automatically)
+bindsym $alt+Shift+Tab focus prev
+
+# ------------------------------------------------------------------------------
 # 5. Workspaces Configuration
 # ------------------------------------------------------------------------------
 # Define Workspace Names with Nerd Font Glyphs
@@ -419,9 +429,6 @@ exec --no-startup-id dunst
 exec --no-startup-id picom -b
 exec --no-startup-id feh --bg-fill ~/.config/i3/wallpapers/linux-arch-dark.jpg
 
-# Power Management: Monitor battery with upower and alert via notifications
-exec_always --no-startup-id poweralertd
-
 # ------------------------------------------------------------------------------
 # System Preferences (X Server Options)
 # ------------------------------------------------------------------------------
@@ -481,6 +488,7 @@ for_window [class="kitty-floating"] floating enable, resize set 50 ppt 50 ppt, m
 # --- 9.5 Web Browsers Rules (Firefox & Zen) ---
 # Places Manager (Bookmarks & History)
 for_window [class="(?i)(firefox|zen)" instance="^Places$"] floating enable, resize set 50 ppt 50 ppt, move position center
+for_window [class="(?i)(firefox|zen)" instance="^Navigator$" title="^Sign in - Google Accounts — Zen Browser.*"] floating enable, resize set 25 ppt 50 ppt, move position center
 
 # Dynamic Torrent Popups
 for_window [class="(?i)(firefox|zen)" instance="^Navigator$" title="^Torrents.*"] floating enable, resize set 33 ppt 50 ppt, move position center
@@ -500,6 +508,7 @@ for_window [class="^mpv$" window_role="^mpv-fullscreen$"] floating disable, focu
 for_window [class="^Xdm-app$" title="^Xtreme Download Manager$"] floating enable, resize set 75 ppt 75 ppt, move position center
 for_window [class="^Xdm-app$" title="^New Download$"] floating enable, resize set 30 ppt 15 ppt, move position center
 for_window [class="^Xdm-app$" title="^Settings$"] floating enable, resize set 50 ppt 50 ppt, move position center
+for_window [class="^Xdm-app$" title="^*%*$"] floating enable, resize set 25 ppt 15 ppt, move absolute position 74 ppt 79 ppt
 
 # Transmission-GTK (Fixed Case-Sensitivity Match)
 for_window [class="(?i)transmission-gtk"] floating enable, resize set 30 ppt 60 ppt, move position center
